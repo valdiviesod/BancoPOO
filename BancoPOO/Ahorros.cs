@@ -7,24 +7,23 @@ namespace BancoPOO
 {
     class Ahorros
     {
+        int numcuenta;
         int saldo;
         private double saldoconsignar;
+        private double saldoretirar;
         String nombre;
 
         public void NumeroCuenta()
         {
-            for (int i = 0; i <= 0; i++)
-            {
-                var guid = Guid.NewGuid();
-
-                var justNumbers = new String(guid.ToString().Where(Char.IsDigit).ToArray());
-                var seed = int.Parse(justNumbers.Substring(0, 8));
-
-                var random = new Random(seed);
-                var value = random.Next(0, 8);
-
-                Console.WriteLine($"Número de cuenta: {seed}");
-            }
+            Random rnd = new Random();
+            numcuenta = rnd.Next(10000000, 99999999);
+            Console.WriteLine("Número de cuenta: " + numcuenta);
+        }
+        public void MostrarNombre()
+        {
+            Console.WriteLine("Nombre: ");
+            this.nombre = Console.ReadLine();
+            Console.WriteLine(this.nombre);
         }
 
         public double GetSaldoConsignar()
@@ -44,6 +43,36 @@ namespace BancoPOO
             consignar = this.saldo + this.saldoconsignar;
             Console.WriteLine("Su saldo actual es: " + consignar);
         }
-  
+
+        public double GetSaldoRetirar()
+        {
+            return this.saldoretirar;
+        }
+
+        public void SetSaldoRetirar(double dato2)
+        {
+            this.saldoretirar = dato2;
+        }
+
+        public void Retirar()
+        {
+            this.saldo = 50000;
+            double retirar;
+            retirar = this.saldo - this.saldoretirar;
+            if (retirar > this.saldo)
+            {
+                Console.WriteLine("ERROR, el dinero a retirar es mayor a su saldo, intentelo de nuevo");
+            }
+            else
+            {
+                Console.WriteLine("Su saldo actual es: " + retirar);
+            }
+
+
+
+
+
+
+        }
     }
 }
