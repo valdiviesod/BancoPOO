@@ -8,7 +8,8 @@ namespace BancoPOO
     class Ahorros
     {
         int numcuenta;
-        int saldo;
+        private double saldo = 50000;
+        private double saldototal = 0;
         private double saldoconsignar;
         private double saldoretirar;
         String nombre;
@@ -21,9 +22,8 @@ namespace BancoPOO
         }
         public void MostrarNombre()
         {
-            Console.WriteLine("Nombre: ");
-            this.nombre = Console.ReadLine();
-            Console.WriteLine(this.nombre);
+            this.nombre = "Daniel Valdivieso";
+            Console.WriteLine("Titular de la cuenta: " + this.nombre);
         }
 
         public double GetSaldoConsignar()
@@ -38,10 +38,9 @@ namespace BancoPOO
 
         public void Consignar()
         {
-            this.saldo = 50000;
-            double consignar;
-            consignar = this.saldo + this.saldoconsignar;
-            Console.WriteLine("Su saldo actual es: " + consignar);
+            saldo += saldoconsignar;
+            saldototal = saldo;
+            Console.WriteLine("¡Consignación exitosa!");
         }
 
         public double GetSaldoRetirar()
@@ -56,23 +55,29 @@ namespace BancoPOO
 
         public void Retirar()
         {
-            this.saldo = 50000;
-            double retirar;
-            retirar = this.saldo - this.saldoretirar;
-            if (retirar > this.saldo)
+            saldo -= saldoretirar;
+            if (saldo < 0)
             {
                 Console.WriteLine("ERROR, el dinero a retirar es mayor a su saldo, intentelo de nuevo");
             }
             else
             {
-                Console.WriteLine("Su saldo actual es: " + retirar);
+                saldototal = saldo;
+                Console.WriteLine("¡Retiro exitoso!");
             }
 
-
-
-
-
-
         }
+
+        public double getSaldo()
+        {
+            return saldototal;
+        }
+
+        public double getSaldoInicial()
+        {
+            return saldo;
+        }
+
+
     }
 }
