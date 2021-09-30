@@ -39,7 +39,7 @@ namespace BancoPOO
         public void ConsignarC()
         {
             saldoc += saldoconsignarc;
-            saldototal = saldoc;
+            saldototal += saldoc;
             Console.WriteLine("¡Consignación exitosa!");
         }
 
@@ -62,7 +62,7 @@ namespace BancoPOO
             }
             else
             {
-                saldototal = saldoc;
+                saldototal += saldoc;
                 Console.WriteLine("¡Retiro exitoso!");
             }
             
